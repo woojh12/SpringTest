@@ -42,4 +42,47 @@ public class RealestateController {
 		
 		return list;
 	}
+	
+	@RequestMapping("/mybatis/real-estate/insert/1")
+	@ResponseBody
+	public String createRealEstateObject()
+	{
+		RealEstate realEstate = new RealEstate();
+		realEstate.setOfficeId(3);
+		realEstate.setAddress("푸르지용 리버 303동 1104호");
+		realEstate.setArea(89);
+		realEstate.setType("매매");
+		realEstate.setPrice(10000);
+		
+		int count = realEstateService.addObjectRealEstate(realEstate);
+		
+		return "입력 성공 : " + count;
+	}
+	
+	@RequestMapping("/mybatis/real-estate/insert/2")
+	@ResponseBody
+	public String createRealEstate(@RequestParam("officeId") int officeId)
+	{
+		int count = realEstateService.addParamRealEstate(officeId, "썅뗴빌리버 오피스텔 814호", 45, "월세", 100000, 120);
+		
+		return "입력 성공 : " + count;
+	}
+	
+	@RequestMapping("/mybatis/real-estate/update/1")
+	@ResponseBody
+	public String updateRealEstate(@RequestParam("id") int id, @RequestParam("price") int price, @RequestParam("type") String type)
+	{
+		int count = realEstateService.updateRealEstate(id, price, type);
+		
+		return "수정 성공 : " + count;
+	}
+	
+	@RequestMapping("/mybatis/real-estate/delete/1")
+	@ResponseBody
+	public String deleteRealEstate(@RequestParam("id") int id)
+	{
+		int count = realEstateService.deleteRealEstate(id);
+		
+		return "수정 성공 : " + count;
+	}
 }

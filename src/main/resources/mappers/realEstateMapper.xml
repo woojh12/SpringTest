@@ -42,7 +42,7 @@
  	</select>
  	
  	<select id="selectAreaPrice" resultType="com.dnjh.spring.test.mybatis.domain.RealEstate"
- 	parameterType="int">
+ 	parameterType="map">
  		SELECT
  			`id`
  			, `officeId`
@@ -58,8 +58,75 @@
  		WHERE
  			<![CDATA[
  				`area` < #{area} 
- 				&&
+ 				AND
  				`price` < #{price}
+ 				AND `type` = '매매'
  			]]>
  	</select>
+ 	
+ 	<insert id="insertObjectRealEstate" parameterType="com.dnjh.spring.test.mybatis.domain.RealEstate">
+ 		INSERT
+ 			`real_estate`
+ 			(
+ 				`officeId`
+ 				, `address`
+ 				, `area`
+ 				, `type`
+ 				, `price`
+ 			)
+ 		VALUE
+ 			(
+ 				#{officeId}
+ 				, #{address}
+ 				, #{area}
+ 				, #{type}
+ 				, #{price}
+ 			) 			
+ 	</insert>
+ 	
+ 	<insert id="insertParamRealEstate" parameterType="map">
+ 		INSERT
+ 			`real_estate`
+ 			(
+ 				`officeId`
+ 				, `address`
+ 				, `area`
+ 				, `type`
+ 				, `price`
+ 				, `rentPrice`
+ 			)
+ 		VALUE
+ 			(
+ 				#{officeId}
+ 				, #{address}
+ 				, #{area}
+ 				, #{type}
+ 				, #{price}
+ 				, #{rentPrice}
+ 			)
+ 	</insert>
+ 	
+ 	<update id="updateRealEstate" parameterType="map">
+ 		UPDATE
+ 			`real_estate`
+ 		SET
+ 			`price` = #{price}
+ 			, `type` = #{type}
+ 			, `updatedAt` = now()
+ 		WHERE 
+ 			<![CDATA[
+ 				`id` = #{id}
+ 			]]>
+ 	</update>
+ 	
+ 	<delete id="deleteRealEstate" parameterType="int">
+ 		DELETE
+ 			
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+ 			<![CDATA[
+ 				`id` = #{id}
+ 			]]>
+ 	</delete>
  </mapper>
