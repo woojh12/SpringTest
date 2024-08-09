@@ -20,6 +20,8 @@ public class StoreController {
 	@ResponseBody
 	public List<store> storeList()
 	{
+		// 가게 정보 리스트를 json으로 response로 담아야함.
+		// 가게 정보 리스트 얻어 오기
 		List<store> storeList = storeService.getStoreList();
 		
 		return storeList;

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.dnjh.spring.test.mybatis.repository.RealEstateRepository">
+ 	<select id="selectRealEstate" resultType="com.dnjh.spring.test.mybatis.domain.RealEstate"
+ 	parameterType="int">
+ 		SELECT
+ 			`id`
+ 			, `officeId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+ 			`id` = #{id}
+ 	</select>
+ 	
+ 	<select id="selectRentPrice" resultType="com.dnjh.spring.test.mybatis.domain.RealEstate"
+ 	parameterType="Integer">
+ 		SELECT
+ 			`id`
+ 			, `officeId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+ 			<![CDATA[
+ 				`rentPrice` < #{rentPrice}
+ 			]]>
+ 	</select>
+ 	
+ 	<select id="selectAreaPrice" resultType="com.dnjh.spring.test.mybatis.domain.RealEstate"
+ 	parameterType="int">
+ 		SELECT
+ 			`id`
+ 			, `officeId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+ 			<![CDATA[
+ 				`area` < #{area} 
+ 				&&
+ 				`price` < #{price}
+ 			]]>
+ 	</select>
+ </mapper>
