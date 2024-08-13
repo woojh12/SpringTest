@@ -3,13 +3,13 @@ package com.dnjh.spring.test.mvc.domain;
 import java.time.LocalDateTime;
 
 public class Seller {
+	
 	private int id;
 	private String nickname;
 	private double temperature;
 	private String profileImage;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
-	
 	public int getId() {
 		return id;
 	}
@@ -47,5 +47,6 @@ public class Seller {
 		this.updatedAt = updatedAt;
 	}
 	
-	
+
+		
 }

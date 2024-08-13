@@ -3,22 +3,47 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.dnjh.spring.test.mvc.repository.SellerRepository">
- 	<select id="selectSeller" parameterType="map" resultType="map">
+ 	<insert id="insertSeller" parameterType="map">
+ 		INSERT INTO
+ 			`seller`
+ 			(
+	 			`nickname`
+	 			, `temperature`
+	 			, `profileImage`		
+ 			)
+ 		VALUE
+ 			(
+ 				#{nickName}
+ 				, #{temperature}
+ 				, #{profile}
+ 			)	
+ 	</insert>
+ 	
+ 	<select id="getLastSeller" resultType="com.dnjh.spring.test.mvc.domain.Seller">
  		SELECT
- 			`id`
- 			, `nickname`
+ 			`nickname`
  			, `temperature`
  			, `profileImage`
  			, `createdAt`
  			, `updatedAt`
- 		FROM
+ 		FROM	
+ 			`seller`
+ 		ORDER BY 
+ 			`createdAt`DESC
+ 		LIMIT
+ 			1
+ 	</select>
+ 	
+ 	<select id="selectSeller" parameterType="int" resultType="com.dnjh.spring.test.mvc.domain.Seller">
+ 		SELECT
+ 			`nickname`
+ 			, `temperature`
+ 			, `profileImage`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM	
  			`seller`
  		WHERE
- 			`nickname` = #{nickname}
- 			AND
- 			`temperature` = #{temperature}
- 			AND
- 			`profileImage` = #{profileImage}
- 			
+ 			`id` = #{id}
  	</select>
  </mapper>

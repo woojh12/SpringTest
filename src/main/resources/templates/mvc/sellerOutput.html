@@ -5,11 +5,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>판매자 정보</h1>
-	<img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTw-Uzbuy7frnyQV19cJ8IoGSOae-ItoMKDI9TYiWcYpKf6NTRSI9BdyuDFZ2Y6p9N6b3B-Z-gNJyq8m6AQlDyzuvKF7hopblS7f2gE5qI0oe9k5-hPnM5wkg&usqp=CAc">
+	<h2>판매자 정보</h2>
+	<img width="100" height="100" th:src="@{${seller.profileImage}}" alt="" />
 	<br>
-	<label>테스트</label>
+	<label th:text="${seller.nickname}">닉네임</label>
 	<br>
-	<label>테스트</label>
+	<label th:text="${seller.temperature}">매너온도</label>	
 </body>
 </html>
