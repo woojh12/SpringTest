@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>반복문</title>
+</head>
+<body>
+	<h3>1.반복문</h3>
+	
+	<h1>HOT 5</h1>
+	<table border="1">
+		<thead>
+			<th>순위</th>
+			<th>제목</th>
+		</thead>
+		
+		<tbody>
+			<tr th:each="music, status:${musicRanking}">
+				<td th:text="${status.count}">1</td>
+				<td th:text="${music}">강남스타일</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
