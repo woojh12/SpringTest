@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>종합문제 1</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="/test04-info.css">
+</head>
+<body>
+	<h3>1. 날씨 정보 페이지</h3>
+	
+	<!-- css/style.css -->
+	<div id="wrap" class="bg-dark d-flex">
+		<div class="bg-primary menu">
+			<div class="menu-Logo">
+				<img src="data:image/png;base64,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">
+			</div>
+			<div class="sub-menu">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link text-light" href="#">날씨</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-light" href="#">날씨입력</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-light" href="#">테마날씨</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-light" href="#">관측 기후</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="info">dd</div>
+	</div>
+</body>
+</html>
