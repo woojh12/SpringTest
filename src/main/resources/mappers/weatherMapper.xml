@@ -14,4 +14,26 @@
  		FROM
  			`weatherhistory`
  	</select>
+ 	
+ 	<insert id="createWeather" parameterType="Map">
+ 		INSERT INTO
+ 			`weatherhistory`
+ 			(
+ 				`date`
+ 				, `weather`
+ 				, `temperatures`
+ 				, `precipitation`
+ 				, `microDust`
+ 				, `windSpeed`
+ 			)
+ 		Value
+ 			(
+ 				#{date}
+ 				, #{weather}
+ 				, #{temperatures}
+ 				, #{precipitation}
+ 				, #{microDust}
+ 				, #{windSpeed}
+ 			)
+ 	</insert>
  </mapper>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>종합문제 1</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="/test04-info.css">
+<link rel="stylesheet" href="/thymeleaf/weather/css/test04-info.css">
 </head>
 <body>
 	<h3>1. 날씨 정보 페이지</h3>
@@ -46,7 +46,7 @@
 					</thead>
 					<tbody>
 						<tr th:each="weather:${list}">
-							<td th:text="${weather.date}">2015년7월55일</td>
+							<td th:text="${#temporals.format(weather.date, 'yyyy년 M월 dd일')}">2015년7월55일</td>
 							<td th:if="${#strings.equals(weather.weather.toString(), '비')}">
 								<img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg">
 							</td>
@@ -59,10 +59,10 @@
 							<td th:if="${#strings.equals(weather.weather.toString(), '흐림')}">
 								<img src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg">
 							</td>
-							<td th:text="${weather.temperatures}">21.9</td>
-							<td th:text="${weather.precipitation}">83</td>
+							<td th:text="${weather.temperatures} + '°C'">21.9</td>
+							<td th:text="${weather.precipitation} + 'mm'">83</td>
 							<td th:text="${weather.microDust}">보통</td>
-							<td th:text="${weather.windSpeed}">2.9km/h</td>
+							<td th:text="${weather.windSpeed} + 'km.h'">2.9km/h</td>
 						</tr>
 					</tbody>
 				</table>

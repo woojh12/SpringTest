@@ -1,11 +1,14 @@
 package com.dnjh.spring.test.thymeleaf;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dnjh.spring.test.thymeleaf.domain.WeatherHistory;
 import com.dnjh.spring.test.thymeleaf.service.WeatherService;
@@ -27,10 +30,19 @@ public class Test04 {
 	
 	
 	@GetMapping("/thymeleaf/test04/create")
-	public String createWeather()
+	public String createWeather(
+			@RequestParam("date") @DateTimeFormat(pattern = "yyyy년MM월dd일") LocalDate date
+			, @RequestParam("weather") String weather
+			, @RequestParam("temperatures") double temperatures
+			, @RequestParam("precipitation") double precipitation
+			, @RequestParam("microDust") String microDust
+			, @RequestParam("windSpeed") double windSpeed)
 	{
-		return "";
+		int count = weatherService.createWeather(date, weather, temperatures, precipitation, microDust, windSpeed);
+		
+		return "redirect:/thymeleaf/test04/info";
 	}
+	
 	@GetMapping("/thymeleaf/test04/input")
 	public String inputWeather()
 	{

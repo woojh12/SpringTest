@@ -1,6 +1,6 @@
 package com.dnjh.spring.test.thymeleaf.service;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +19,12 @@ public class WeatherService {
 		List<WeatherHistory> list = weatherRepository.selectWeather();
 		
 		return list;
+	}
+	
+	public int createWeather(LocalDate date, String weather, double temperatures, double precipitation, String microDust, double windSpeed)
+	{
+		int count = weatherRepository.createWeather(date, weather, temperatures, precipitation, microDust, windSpeed);
+		
+		return count;
 	}
 }

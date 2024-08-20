@@ -1,15 +1,19 @@
 package com.dnjh.spring.test.thymeleaf.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class WeatherHistory {
 	private int id;
-	private String date;
+	@DateTimeFormat(pattern = "yyyy년MM월dd일")
+	private LocalDate date;
 	private String weather;
-	private String temperatures;
-	private String precipitation;
+	private double temperatures;
+	private double precipitation;
 	private String microDust;
-	private String windSpeed;
+	private double windSpeed;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 	
@@ -19,10 +23,10 @@ public class WeatherHistory {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	public String getWeather() {
@@ -31,16 +35,16 @@ public class WeatherHistory {
 	public void setWeather(String weather) {
 		this.weather = weather;
 	}
-	public String getTemperatures() {
+	public double getTemperatures() {
 		return temperatures;
 	}
-	public void setTemperatures(String temperatures) {
+	public void setTemperatures(double temperatures) {
 		this.temperatures = temperatures;
 	}
-	public String getPrecipitation() {
+	public double getPrecipitation() {
 		return precipitation;
 	}
-	public void setPrecipitation(String precipitation) {
+	public void setPrecipitation(double precipitation) {
 		this.precipitation = precipitation;
 	}
 	public String getMicroDust() {
@@ -49,10 +53,10 @@ public class WeatherHistory {
 	public void setMicroDust(String microDust) {
 		this.microDust = microDust;
 	}
-	public String getWindSpeed() {
+	public double getWindSpeed() {
 		return windSpeed;
 	}
-	public void setWindSpeed(String windSpeed) {
+	public void setWindSpeed(double windSpeed) {
 		this.windSpeed = windSpeed;
 	}
 	public LocalDateTime getCreatedAt() {
@@ -66,7 +70,5 @@ public class WeatherHistory {
 	}
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
-	}
-	
-	
+	}	
 }
