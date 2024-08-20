@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+#wrap
+{
+	width : 1200px;
+	height: 1000px;
+}
+
+.main
+{
+	height : 900px;	
+}
+
+.menu
+{
+	width : 200px;
+	height : 900px;
+}
+
+.menu > .menu-Logo
+{
+	width : 200px;
+	height : 100px;
+}
+
+.menu > .sub-menu
+{
+	width : 200px;
+	height : 800px;
+}
+
+.info
+{
+	width : 1000px;
+	height : 900px
+}
+
+footer
+{
+	height : 100px;
+}
+
+footer > .image-Logo
+{
+	width : 200px;
+}
+
+footer > .text-Logo
+{
+	width : 1000px;
+}
