@@ -21,6 +21,16 @@ header
 	height : 970px;
 }
 
+.storesList > .storeList
+{
+	height : 100px;
+}
+
+.storeList > .address
+{
+	height : 25px;
+}
+
 footer
 {
 	height : 50px;

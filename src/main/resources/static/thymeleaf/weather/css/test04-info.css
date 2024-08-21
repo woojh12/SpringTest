@@ -3,18 +3,12 @@
 #wrap
 {
 	width : 1200px;
-	height: 1000px;
-}
-
-.main
-{
-	height : 900px;	
 }
 
 .menu
 {
 	width : 200px;
-	height : 900px;
+	
 }
 
 .menu > .menu-Logo
@@ -32,12 +26,7 @@
 .info
 {
 	width : 1000px;
-	height : 900px
-}
-
-footer
-{
-	height : 100px;
+	
 }
 
 footer > .image-Logo

@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>2.날씨 입력 페이지</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="/thymeleaf/weather/css/test04-input.css">
 </head>
@@ -36,7 +39,7 @@
 					<div class="mt-5 d-flex">
 						<div class="d-flex ml-5">
 							<label>날짜</label>
-							<input type="text" class="form-control col-6 ml-2" name="date">					
+							<input type="text" class="form-control col-6 ml-2" name="date" id="datePicker">					
 						</div>
 						<div class="d-flex ml-5">
 							<label>날씨</label>
@@ -82,5 +85,11 @@
 			</footer>
 		</div>
 	</form>
+	
+	<script type="text/javascript">
+		$('#datePicker').datepicker({
+			dateFormat : "yy년mm월dd일"
+		});
+	</script>
 </body>
 </html>
