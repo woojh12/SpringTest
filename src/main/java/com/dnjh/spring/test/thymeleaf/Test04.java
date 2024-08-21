@@ -29,9 +29,11 @@ public class Test04 {
 	}
 	
 	
+	// @RequestParam의 파라미터명과 받는 변수명이 같은 경우 @Requestparam 뒤의 파라미터명은 안 붙여도됨.
+	//  @RequestParam String weather 와 같이 가능
 	@GetMapping("/thymeleaf/test04/create")
 	public String createWeather(
-			@RequestParam("date") @DateTimeFormat(pattern = "yyyy년MM월dd일") LocalDate date
+			 @RequestParam("date") @DateTimeFormat(pattern = "yyyy년MM월dd일") LocalDate date
 			, @RequestParam("weather") String weather
 			, @RequestParam("temperatures") double temperatures
 			, @RequestParam("precipitation") double precipitation

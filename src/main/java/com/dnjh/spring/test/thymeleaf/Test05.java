@@ -23,4 +23,10 @@ public class Test05 {
 		
 		return "thymeleaf/test05-info";
 	}
+	
+	@GetMapping("/thymeleaf/test05/output")
+	public String storeReview(Model model)
+	{
+		return "thymeleaf/test05-output";
+	}
 }

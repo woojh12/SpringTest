@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+#wrap
+{
+	width : 600px;
+	height : 1200px;
+}
+
+header
+{
+	height: 80px;
+}
+
+.storesName
+{
+	height :100px;
+}
+
+.storesList
+{
+	height : 970px;
+}
+
+.storesList > .storeList
+{
+	height : 150px;
+}
+
+.storeList > .address
+{
+	height : 25px;
+}
+
+footer
+{
+	height : 50px;
+}
