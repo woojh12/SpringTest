@@ -13,10 +13,17 @@ public class FavoriteService {
 	@Autowired
 	private FavoriteRepository favoriteRepository;
 	
-	public List<Favorite> getFavorite()
+	public List<Favorite> getFavoriteList()
 	{
-		List<Favorite> favoriteList = favoriteRepository.selectFavorite();
+		List<Favorite> favoriteList = favoriteRepository.selectFavoriteList();
 		
 		return favoriteList;
+	}
+	
+	public int addFavorite(String name, String url)
+	{
+		int count = favoriteRepository.insertFavorite(name, url);
+		
+		return count;
 	}
 }

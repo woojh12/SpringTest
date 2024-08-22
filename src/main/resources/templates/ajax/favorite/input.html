@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<title>즐겨찾기 추가하기</title>
+</head>
+<body>
+	<div class="container">
+		<h1>즐겨 찾기 추가하기</h1>
+		<label>제목</label>
+		<input type="text" class="container col-6" id="nameInput"><br>
+		<label>주소</label>
+		<input type="text" class="container col-6" id="urlInput"><br>
+		
+		<button type="submit" class="btn btn-success col-10" id="addBtn">추가</button>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function(){
+			$("#addBtn").on("click", function(){
+				let name = $("#nameInput").val();
+				let url = $("#urlInput").val();
+				
+				let urlCheck1 = url.startsWith("http://");
+				let urlCheck2 = url.startsWith("https://");
+				
+				if(name == "")
+				{
+					alert("이름을 입력하세요");
+					return;
+				}
+				if(url == "")
+				{
+					alert("url을 입력하세요");
+					return;
+				}
+				if(!urlCheck1 && !urlCheck2)
+				{
+					alert("http:// 혹은 https:// 형식 아님");
+					return;
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/ajax/favorite/create"
+					, data:{"name":name, "url":url}
+					, success:function(data)
+					{
+						if(data.result == "success")
+						{
+							alert("추가 성공");
+							location.href= "/ajax/favorite/info";
+							alert("이동");
+						}
+						else
+						{
+							alert("추가 실패");
+						}			
+					}
+					, error:function()
+					{
+						alert("에러!");
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>
