@@ -15,5 +15,7 @@ public interface FavoriteRepository {
 			@Param("name") String name
 			, @Param("url") String url);
 	
-	public int selectCountByEmail(@Param("email") String email);
+	public int selectCountByAddress(@Param("url") String url);
+	
+	public int deleteFavorite(@Param("id") int id);
 }

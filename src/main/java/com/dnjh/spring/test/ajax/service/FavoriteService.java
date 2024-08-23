@@ -27,9 +27,9 @@ public class FavoriteService {
 		return count;
 	}
 	
-	public boolean isDuplicateEmail(String email)
+	public boolean isDuplicateAddress(String url)
 	{
-		int count = favoriteRepository.selectCountByEmail(email);
+		int count = favoriteRepository.selectCountByAddress(url);
 		
 		if(count == 0)
 		{
@@ -39,5 +39,12 @@ public class FavoriteService {
 		{
 			return true;
 		}
+	}
+	
+	public int deleteFavorite(int id)
+	{
+		int count = favoriteRepository.deleteFavorite(id);
+		
+		return count;
 	}
 }

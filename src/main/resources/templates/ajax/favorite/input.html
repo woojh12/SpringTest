@@ -10,14 +10,43 @@
 		<label>제목</label><br>
 		<input type="text" class="container col-6" id="nameInput"><br>
 		<label>주소</label><br>
-		<input type="text" class="container col-6" id="urlInput"><button class="ml-3 btn btn-info">중복확인</button><br>
-		
+		<input type="text" class="container col-6" id="urlInput"><button class="ml-3 btn btn-info" id="duplicateBtn">중복확인</button><br>
+		<div id="checkUrl"></div>
 		<button type="submit" class="mt-5 btn btn-success col-10" id="addBtn">추가</button>
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script>
 		$(document).ready(function(){
+			$("#duplicateBtn").on("click", function(){
+				let url = $("#urlInput").val();
+				
+				if(url == "")
+				{
+					alert("url을 입력하세요");	
+					return;
+				}
+				
+				$.ajax({
+					type:"get"
+					, url:"/ajax/favorite/duplicate"
+					, data:{"url":url}
+					, success:function(data)
+					{
+						if(data.isDuplicate)
+						{
+							$("#checkUrl").html('<p style="color:red">중복되었습니다.</p>');
+						}
+						else
+						{
+							$("#checkUrl").html('<p style="color:red">등록가능한 URL입니다.</p>');
+						}
+					}
+					, error:function(){
+						alert("중복확인 에러");
+					}
+				});
+			});
 			$("#addBtn").on("click", function(){
 				let name = $("#nameInput").val();
 				let url = $("#urlInput").val();
