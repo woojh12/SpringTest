@@ -50,6 +50,7 @@ public class FavoriteController {
 		
 		return resultMap; 
 	}
+	
 	@GetMapping("/ajax/favorite/input")
 	public String favoriteInput()
 	{

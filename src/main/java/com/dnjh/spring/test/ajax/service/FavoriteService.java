@@ -26,4 +26,18 @@ public class FavoriteService {
 		
 		return count;
 	}
+	
+	public boolean isDuplicateEmail(String email)
+	{
+		int count = favoriteRepository.selectCountByEmail(email);
+		
+		if(count == 0)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
 }
