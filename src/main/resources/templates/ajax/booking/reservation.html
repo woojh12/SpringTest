@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>예약 페이지</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="/ajax/reservation.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
+</head>
+<body>
+	<div id="wrap">
+		<header class="d-flex items-align-center justify-content-center align-items-center">
+			<div class="display-3">통나무 팬션</div>
+		</header>
+		<div class="contents">
+			<nav class="bg-danger">
+				<ul class="nav nav-fill">
+					<li class="nav-item">
+						<a class="nav-link text-light" href="#">팬션소개</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-light" href="">객실보기</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-light" href="">예약하기</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-light" href="">예약목록</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="sub-contents d-flex justify-content-center align-items-center">
+				<h3 class="font-weight-bold">예약하기</h3>
+			</div>
+		</div>
+		<div class="main container d-flex">
+			<div class="first"></div>
+			<div class="second">
+				<label class="mt-2 font-weight-bold">이름</label><br>
+				<input type="text" class="container" id="nameInput">
+				<label class="mt-2 font-weight-bold">예약날짜</label><br>
+				<input type="text" class="container" id="dateInput">
+				<label class="mt-2 font-weight-bold">숙박일수</label><br>
+				<input type="text" class="container" id="dayInput">
+				<label class="mt-2 font-weight-bold">숙박인원</label><br>
+				<input type="text" class="container" id="headcountInput">
+				<label class="mt-2 font-weight-bold">전화번호</label><br>
+				<input type="text" class="container" id="phoneNumberInput">
+				<button type="submit" class="mt-3 btn btn-warning col-12" id="reserveBtn">예약하기</button>
+			</div>
+			<div class="last"></div>
+		</div>
+		<footer>
+			<div class="text-secondary">제주특별자치도 제주시 애월읍</div>
+			<div class="text-secondary">사업자등록번호: 111-22-255222 / 농어촌민박사업자지정</div>
+			<div class="text-secondary">Copyright</div>
+		</footer>
+	
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#reserveBtn").on("click", function(){
+				let name = $("#nameInput").val();
+				let date = $("#dateInput").val();
+				let day = $("#dayInput").val();
+				let headcount = $("#headcountInput").val();
+				let phoneNumber = $("#phoneNumberInput").val();
+				let state = "확정"
+				
+				if(name == "")		
+				{
+					alert("이름을 입력하세요.");
+					return;
+				}
+				if(date == "")
+				{
+					alert("예약날짜를 입력하세요.");	
+					return;
+				}
+				if(day == "")
+				{
+					alert("숙박일수를 입력하세요.");
+					return;
+				}
+				if(headcount == "")
+				{
+					alert("숙박인원을 입력하세요.");
+					return;
+				}
+				if(phoneNumber == "")
+				{
+					alert("전화번호를 입력하세요.");
+					return;
+				}
+				
+				$.ajax({
+					type:"get"
+					, url:"/ajax/booking/create"
+					, data:{"name":name, "date":date, "day":day, "headcount":headcount, "phoneNumber":phoneNumber, "state":state}
+					, success:function(data)
+					{
+						if(data.result == "success")
+						{
+							alert("데이터 추가 성공");
+							location.href="/ajax/booking/info";
+						}
+						else
+						{
+							alert("데이터 추가 실패");
+						}
+					}
+					, error:function()
+					{
+						alert("에러발생!!");
+					}
+				});
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		$('#dateInput').datepicker({
+			dateFormat : "yy년mm월dd일"
+		});
+	</script>
+</body>
+</html>

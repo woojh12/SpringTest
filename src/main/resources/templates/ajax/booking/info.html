@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="/ajax/info.css">
+<title>예약확인 페이지</title>
+</head>
+<body>
+	<div id="wrap">
+		<header class="d-flex items-align-center justify-content-center align-items-center">
+			<div class="display-3">통나무 팬션</div>
+		</header>
+		<div class="contents">
+			<nav class="bg-danger">
+				<ul class="nav nav-fill">
+					<li class="nav-item">
+						<a class="nav-link text-light" href="#">팬션소개</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-light" href="">객실보기</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-light" href="">예약하기</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-light" href="">예약목록</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="sub-contents d-flex justify-content-center align-items-center">
+				<h3 class="font-weight-bold">예약 목록 보기</h3>
+			</div>
+		</div>
+		<div class="main container">
+			<table class="table">
+				<thead>
+					<th>이름</th>
+					<th>예약날짜</th>
+					<th>숙박일수</th>
+					<th>숙박인원</th>
+					<th>전화번호</th>
+					<th>예약상태</th>
+					<th></th>
+				</thead>
+				<tbody>
+					<tr th:each="book:${bookingList}">
+						<td th:text="${book.name}">홍길동</td>
+						<td th:text="${#temporals.format(book.date, 'yyyy년MM월dd일')}">2021년6월30일</td>
+						<td th:text="${book.day}">2</td>
+						<td th:text="${book.headcount}">4</td>
+						<td th:text="${book.phoneNumber}">010-1234-1233</td>
+						<td th:text="${book.state}">예약</td>
+						<td><button class="btn btn-danger">삭제</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<footer>
+			<div class="text-secondary">제주특별자치도 제주시 애월읍</div>
+			<div class="text-secondary">사업자등록번호: 111-22-255222 / 농어촌민박사업자지정</div>
+			<div class="text-secondary">Copyright</div>
+		</footer>
+	</div>
+	
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+	</script>
+</body>
+</html>
