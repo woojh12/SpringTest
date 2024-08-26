@@ -50,8 +50,10 @@
 						<td th:text="${book.day}">2</td>
 						<td th:text="${book.headcount}">4</td>
 						<td th:text="${book.phoneNumber}">010-1234-1233</td>
-						<td th:text="${book.state}">예약</td>
-						<td><button class="btn btn-danger">삭제</button></td>
+						<td th:text="${book.state}" th:if="${#strings.equals(book.state,'대기중')}" class="text-primary">예약</td>
+						<td th:text="${book.state}" th:if="${#strings.equals(book.state,'확정')}" class="text-danger">예약</td>
+						<td th:text="${book.state}" th:if="${#strings.equals(book.state,'취소')}">예약</td>
+						<td><button class="btn btn-danger dangerBtn" th:value="${book.id}">삭제</button></td>
 					</tr>
 				</tbody>
 			</table>
@@ -66,6 +68,31 @@
 	
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script>
+		$(".dangerBtn").on("click", function(){
+			let id = $(this).val();
+			
+			$.ajax({
+				type:"get"
+				, url:"/ajax/booking/delete"
+				, data:{"id":id}
+				, success:function(data)
+				{
+					if(data.result == "success")
+					{
+						alert("데이터 삭제완료");
+						location.reload();
+					}
+					else
+					{
+						alert("데이터 삭제오류");
+					}
+				}
+				, fail:function()
+				{
+					alert("오류");
+				}
+			});
+		});
 	</script>
 </body>
 </html>

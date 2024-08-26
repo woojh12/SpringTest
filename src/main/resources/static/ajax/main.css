@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+#wrap
+{
+	width : 1200px;
+	height : 800px;
+}
+
+header
+{
+	height : 50px;
+	background-color:#ff8000;
+}
+
+#main-image
+{
+	height : 450px;
+}
+
+article
+{
+	height : 250px;
+}
+
+article > #reserveLogo
+{
+	width : 350px;
+	background-color:#a84832;
+}
+
+article > #reserveCheck
+{
+	width : 500px;
+	background-color:#ff7f00;
+}
+
+#reserveCheck > .check1
+{
+	height : 50px;
+}
+
+#reserveCheck > .check2
+{
+	height : 50px;
+}
+
+#reserveCheck > .check3
+{
+	height : 50px;
+}
+
+#reserveCheck > .check4
+{
+	height : 50px;
+}
+
+#reserveCheck > .check5
+{
+	height : 50px;
+}
+
+article > #reservePhoneNumber
+{
+	width : 350px;
+	background-color:#a84832;
+}
+
+#reservePhoneNumber > .phoneNumber1
+{
+	height : 50px;
+}
+
+#reservePhoneNumber > .phoneNumber2
+{
+	height : 50px;
+}
+
+#reservePhoneNumber > .phoneNumber3
+{
+	height : 50px;
+}
+
+#reservePhoneNumber > .phoneNumber4
+{
+	height : 50px;
+}
+
+#reservePhoneNumber > .phoneNumber5
+{
+	height : 50px;
+}
+footer
+{
+	height : 50px;
+}

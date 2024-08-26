@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="/ajax/main.css">
+<title>예약 메인 페이지</title>
+</head>
+<body>
+	<div id="wrap">
+		<header>
+			<ul class="nav nav-fill">
+				<li class="nav-item">
+					<a class="nav-link text-light" href="#">팬션소개</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-light" href="#">객실보기</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-light" href="#">예약하기</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-light" href="#">예약목록</a>
+				</li>
+			</ul>
+		</header>
+		<div id="main-image">
+			<img src="http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner2.jpg">
+		</div>
+		<article class="bg-success d-flex">
+			<div id="reserveLogo" class="d-flex justify-content-center align-items-center">
+				<h1 class="text-light">실시간</h1>
+				<h1 class="text-light">예약하기</h1>
+			</div>
+			<div id="reserveCheck">
+				<div class="check1 d-flex align-items-center">
+					<h5 class="text-light ml-3">예약 확인</h5>
+				</div>
+				<div class="check2">
+					<label class="text-light ml-5">이름</label>
+					<input type="text" class="container col-5 ml-3 mt-2" id="nameInput">
+				</div>
+				<div class="check3">
+					<label class="text-light ml-3">전화번호</label>
+					<input type="text" class="container col-5 ml-3 mt-2" id="phoneNumberInput">
+				</div>
+				<div class="check4 d-flex align-items-center justify-content-end">
+					<button type="button" class="btn btn-success mr-5" id="searchBtn">조회 하기</button>
+				</div>
+				<div class="check5"></div>
+			</div>
+			<div id="reservePhoneNumber">
+				<div class="phoneNumber1"></div>
+				<div class="phoneNumber2">
+					<div class="text-light ml-5">예약문의 : </div>
+				</div>
+				<div class="phoneNumber3">
+					<h2 class="text-light ml-5">010-</h2>
+				</div>
+				<div class="phoneNumber4">
+					<h2 class="text-light ml-5">000-1111</h2>
+				</div>
+				<div class="phoneNumber5"></div>
+			</div>
+		</article>
+		<footer>
+			<div class="ml-3 mt-3">제주특별자치도 제주시</div><br>
+			<div class="ml-3">사업자등록번호 : </div><br>
+			<div class="ml-3">copyright</div>
+		</footer>
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+		$("#searchBtn").on("click", function(){
+			let name = $("#nameInput").val();
+			let phoneNumber = $("#phoneNumberInput").val();
+			
+			if(name == "")
+			{
+				alert("이름을 입력하세요");
+				return;
+			}
+			if(phoneNumber == "")
+			{
+				alert("전화번호를 입력하세요");
+				return;
+			}
+			
+			$.ajax({
+				type:"get"
+				, url:"/ajax/booking/searchBooking"
+				, data:{"name":name, "phoneNumber":phoneNumber}
+				, success:function(data)
+				{
+					if((data.name == name) && (data.phoneNumber == phoneNumber) )
+					{
+						alert("이름 : " + data.name + "\n날짜 : " + data.date + "\n일수 : " + data.day + "\n인원 : " + data.headcount + "\n상태 : " + data.state);
+					}
+					else if(data.result == "fail")
+					{
+						alert("예약안된 손님입니다.")
+					}
+				}
+				, error:function()
+				{
+					alert("오류");
+				}
+			});
+		});
+	</script>
+</body>
+</html>

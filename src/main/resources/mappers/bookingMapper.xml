@@ -5,7 +5,8 @@
  <mapper namespace="com.dnjh.spring.test.ajax.repository.BookingRepository">
 	 <select id="selectBooking" resultType="com.dnjh.spring.test.ajax.domain.Booking">
  		SELECT
- 			`name`
+ 			`id`
+ 			, `name`
  			, `date`
  			, `day`
  			, `headcount`
@@ -35,5 +36,28 @@
  			, #{phoneNumber}
  			, #{state}
  		)
- 	</insert>	
+ 	</insert>
+ 	
+ 	<delete id="deleteBooking" parameterType="int">
+ 		DELETE 
+ 		
+ 		FROM
+ 		`booking`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete>
+ 	<select id="searchBooking" parameterType="map" resultType="com.dnjh.spring.test.ajax.domain.Booking">
+ 		SELECT
+ 			`id`
+ 			, `name`
+ 			, `date`
+ 			, `day`
+ 			, `headcount`
+ 			, `phoneNumber`
+ 			, `state`
+ 		FROM
+ 			`booking`
+ 		WHERE 
+ 			`name` = #{name} AND `phoneNumber` = #{phoneNumber}
+ 	</select>	
 </mapper>
