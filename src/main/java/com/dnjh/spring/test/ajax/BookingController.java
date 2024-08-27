@@ -87,6 +87,7 @@ public class BookingController {
 		return "/ajax/booking/main";
 	}
 	
+	// 이름과 전화번호를 전달 받고, 일치하는 예약 정보를 response에 data로 채우는 API
 	@ResponseBody
 	@GetMapping("/ajax/booking/searchBooking")
 	public Map<String, Object> searchBooking(
@@ -97,22 +98,35 @@ public class BookingController {
 		
 		Map<String, Object> resultMap = new HashMap<>();
 		
+		// 객체 정보를 하나씩 저장하는 형태
 		if(booking == null)
 		{
 			resultMap.put("result", "fail");
 		}
 		else
 		{
-			// 객체 정보를 하나씩 저장하는 형태
 			resultMap.put("name", booking.getName());
 			resultMap.put("phoneNumber", booking.getPhoneNumber());
 			resultMap.put("date", booking.getDate());
 			resultMap.put("day", booking.getDay());
 			resultMap.put("headcount", booking.getHeadcount());
 			resultMap.put("state", booking.getState());		
-			
-			// 객체 전체를 저장하는 스타일
 		}
+		
+		// 객체 전체를 저장하는 형태
+		//{"result":"success", "booking":booking}; 형식
+//		Booking booking = bookingService.searchBooking(name, phoneNumber);
+//		Map<String, Object> resultMap = new HashMap<>();
+//		if(booking != null)
+//		{
+//			resultMap.put("result", "success");
+//			resultMap.put("booking", booking);
+//		}
+//		else
+//		{
+//			resultMap.put("result", "fail");
+//		}
+//		return resultMap;
 		
 		return resultMap;
 	}

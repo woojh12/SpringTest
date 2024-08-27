@@ -29,8 +29,10 @@
 		</div>
 		<article class="bg-success d-flex">
 			<div id="reserveLogo" class="d-flex justify-content-center align-items-center">
-				<h1 class="text-light">실시간</h1>
-				<h1 class="text-light">예약하기</h1>
+				<div class="display-4 text-light">
+					실시간<br>
+					예약하기
+				</div>
 			</div>
 			<div id="reserveCheck">
 				<div class="check1 d-flex align-items-center">
@@ -76,7 +78,7 @@
 		$("#searchBtn").on("click", function(){
 			let name = $("#nameInput").val();
 			let phoneNumber = $("#phoneNumberInput").val();
-			
+		
 			if(name == "")
 			{
 				alert("이름을 입력하세요");
@@ -102,6 +104,18 @@
 					{
 						alert("예약안된 손님입니다.")
 					}
+					
+					// API 내에 객체 전제를 저장한 case
+					/*
+					if(data.result == "success")
+					{
+						alert("이름 : " + data.booking.name + "\n날짜 : " + data.booking.date + "\n일수 : " + data.booking.day + "\n인원 : " + data.booking.headcount + "\n상태 : " + data.booking.state);
+					}
+					else
+					{
+						alert("정보가 없습니다.");	
+					}
+					*/
 				}
 				, error:function()
 				{
