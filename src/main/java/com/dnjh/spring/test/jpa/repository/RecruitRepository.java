@@ -25,6 +25,6 @@ public interface RecruitRepository extends JpaRepository<Recruit, Integer>{
 	public List<Recruit> findByRegionAndSalaryBetweenOrderByIdAsc(String region, int start, int end);
 	
 	// Native query
-	@Query(value="SELECT * FROM `recruit` WHERE `deadline` >=:deadline And `salary` >=:salary And `type` >=:type ORDER BY `salary` DESC", nativeQuery=true)
+	@Query(value="SELECT * FROM `recruit` WHERE `deadline` > :deadline And `salary` >=:salary And `type` >=:type ORDER BY `salary` DESC", nativeQuery=true)
 	public List<Recruit> selectBydeadLine(@Param("deadline") String deadLine, @Param("salary") int salary, @Param("type") String type);
 }
